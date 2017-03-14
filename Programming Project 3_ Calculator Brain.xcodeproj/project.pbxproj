@@ -10,10 +10,14 @@
 		EA1D458B1E5A273200DCE5B7 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D458A1E5A273200DCE5B7 /* CalculatorBrain.swift */; };
 		EA2D39B71E67865000A408B9 /* accountant.gif in Resources */ = {isa = PBXBuildFile; fileRef = EA2D39B61E67865000A408B9 /* accountant.gif */; };
 		EA6290C61E5663C200C6E439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6290C51E5663C200C6E439 /* AppDelegate.swift */; };
-		EA6290C81E5663C200C6E439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6290C71E5663C200C6E439 /* ViewController.swift */; };
+		EA6290C81E5663C200C6E439 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6290C71E5663C200C6E439 /* CalculatorViewController.swift */; };
 		EA6290CB1E5663C200C6E439 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6290C91E5663C200C6E439 /* Main.storyboard */; };
 		EA6290CD1E5663C200C6E439 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6290CC1E5663C200C6E439 /* Assets.xcassets */; };
 		EA6290D01E5663C200C6E439 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6290CE1E5663C200C6E439 /* LaunchScreen.storyboard */; };
+		EA9A9B491E7880EC006541DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B461E7880EC006541DB /* GraphView.swift */; };
+		EA9A9B4A1E7880EC006541DB /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B471E7880EC006541DB /* extension.swift */; };
+		EA9A9B4B1E7880EC006541DB /* AxesDrawer-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B481E7880EC006541DB /* AxesDrawer-3.swift */; };
+		EA9A9B4D1E7885C6006541DB /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B4C1E7885C6006541DB /* GraphViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +25,15 @@
 		EA2D39B61E67865000A408B9 /* accountant.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = accountant.gif; sourceTree = "<group>"; };
 		EA6290C21E5663C200C6E439 /* Programming Project 2_ Calculator Brain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Programming Project 2_ Calculator Brain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6290C51E5663C200C6E439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA6290C71E5663C200C6E439 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA6290C71E5663C200C6E439 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		EA6290CA1E5663C200C6E439 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA6290CC1E5663C200C6E439 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA6290CF1E5663C200C6E439 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA6290D11E5663C200C6E439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9A9B461E7880EC006541DB /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		EA9A9B471E7880EC006541DB /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		EA9A9B481E7880EC006541DB /* AxesDrawer-3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AxesDrawer-3.swift"; sourceTree = "<group>"; };
+		EA9A9B4C1E7885C6006541DB /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				EA6290D71E56641700C6E439 /* Supporting Files */,
-				EA6290C71E5663C200C6E439 /* ViewController.swift */,
+				EA6290C71E5663C200C6E439 /* CalculatorViewController.swift */,
 				EA1D458A1E5A273200DCE5B7 /* CalculatorBrain.swift */,
 				EA6290C91E5663C200C6E439 /* Main.storyboard */,
+				EA9A9B4C1E7885C6006541DB /* GraphViewController.swift */,
+				EA9A9B461E7880EC006541DB /* GraphView.swift */,
+				EA9A9B471E7880EC006541DB /* extension.swift */,
+				EA9A9B481E7880EC006541DB /* AxesDrawer-3.swift */,
 			);
 			name = "Calculator Brain";
 			path = Calculator;
@@ -116,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 2_ Calculator Brain" */;
+			buildConfigurationList = EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Calculator Brain" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -154,8 +166,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1D458B1E5A273200DCE5B7 /* CalculatorBrain.swift in Sources */,
-				EA6290C81E5663C200C6E439 /* ViewController.swift in Sources */,
+				EA9A9B4B1E7880EC006541DB /* AxesDrawer-3.swift in Sources */,
+				EA9A9B4D1E7885C6006541DB /* GraphViewController.swift in Sources */,
+				EA6290C81E5663C200C6E439 /* CalculatorViewController.swift in Sources */,
 				EA6290C61E5663C200C6E439 /* AppDelegate.swift in Sources */,
+				EA9A9B4A1E7880EC006541DB /* extension.swift in Sources */,
+				EA9A9B491E7880EC006541DB /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 2_ Calculator Brain" */ = {
+		EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Calculator Brain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA6290D21E5663C200C6E439 /* Debug */,

@@ -3,32 +3,28 @@
 //  Calculator 2
 //
 //  Created by Michel Deiman on 02/03/2017.
+//  Updated by Michel Deiman on 14/03/2017.
+//
 //  Copyright © 2017 Michel Deiman. All rights reserved.
 //
 
 import Foundation
 
-
-struct DoubleToString {
-    static let numberFormatter = NumberFormatter()
-}
-
-
 struct CalculatorBrain {
     
-@available(iOS, deprecated, message: "No longer needed")
+    @available(iOS, deprecated, message: "No longer needed")
     var result: Double? {
         return evaluate().result
     }
-        
-@available(iOS, deprecated, message: "No longer needed")
+    
+    @available(iOS, deprecated, message: "No longer needed")
     var resultIsPending: Bool {
         return evaluate().isPending
     }
     
     mutating func setOperand(_ operand: Double)
     {   if !evaluate().isPending {
-            resetExpression()
+        resetExpression()
         }
         accumulator = operand
         expression.append(.operand(.value(operand)))
@@ -36,7 +32,7 @@ struct CalculatorBrain {
     
     mutating func setOperand(variable named: String)
     {   if !evaluate().isPending {
-            resetExpression()
+        resetExpression()
         }
         accumulator = dictionaryForVars.variables[named] ?? 0
         expression.append(.operand(.variable(named)))
@@ -116,7 +112,7 @@ struct CalculatorBrain {
     
     weak var numberFormatter: NumberFormatter! = CalculatorBrain.DoubleToString.numberFormatter
     
-@available(iOS, deprecated, message: "No longer needed")
+    @available(iOS, deprecated, message: "No longer needed")
     var description: String {
         return createDescription()
     }
@@ -130,41 +126,41 @@ struct CalculatorBrain {
     struct DoubleToString {
         static let numberFormatter = NumberFormatter()
     }
-
     
-    private mutating func resetExpression() {
+    
+    fileprivate mutating func resetExpression() {
         accumulator = nil
         pendingBinaryOperation = nil
         expression = []
     }
-
+    
     private func createDescription() -> String {
         var descriptions: [String] = []
         var pendingBinaryOperation = false
         for literal in expression
         {   switch literal {
-            case .operand(let operand):
-                switch operand {
-                case .value(let value): descriptions += [numberFormatter.string(from: value as NSNumber) ?? String(value)]
-                case .variable(let name): descriptions += [name]
+        case .operand(let operand):
+            switch operand {
+            case .value(let value): descriptions += [numberFormatter.string(from: value as NSNumber) ?? String(value)]
+            case .variable(let name): descriptions += [name]
+            }
+        case .operation(let symbol):
+            guard let operation = operations[symbol] else { break }
+            switch operation {
+            case .equals:
+                pendingBinaryOperation = false
+            case .unaryOperation:
+                if pendingBinaryOperation {
+                    let lastOperand = descriptions.last!
+                    descriptions = [String](descriptions.dropLast()) + [symbol + "(" + lastOperand + ")"]
+                } else {
+                    descriptions = [symbol + "("] + descriptions + [")"]
                 }
-            case .operation(let symbol):
-                guard let operation = operations[symbol] else { break }
-                switch operation {
-                case .equals:
-                    pendingBinaryOperation = false
-                case .unaryOperation:
-                    if pendingBinaryOperation {
-                        let lastOperand = descriptions.last!
-                        descriptions = [String](descriptions.dropLast()) + [symbol + "(" + lastOperand + ")"]
-                    } else {
-                        descriptions = [symbol + "("] + descriptions + [")"]
-                    }
-                case .binaryOperation:
-                    pendingBinaryOperation = true
-                    fallthrough
-                default: descriptions += [symbol]
-                }
+            case .binaryOperation:
+                pendingBinaryOperation = true
+                fallthrough
+            default: descriptions += [symbol]
+            }
             }
         }
         return descriptions.reduce("", +)
@@ -173,9 +169,9 @@ struct CalculatorBrain {
     private var accumulator: Double? {  didSet {    _didResetAccumulator = true }   }
     private var _didResetAccumulator: Bool = false
     
-    private var expression: [ExpressionLiteral] = []
+    fileprivate var expression: [ExpressionLiteral] = []
     
-    private enum ExpressionLiteral {
+    fileprivate enum ExpressionLiteral {
         case operand(Operand)
         case operation(String)
         
@@ -185,7 +181,7 @@ struct CalculatorBrain {
         }
     }
     
-    private enum Operation {
+    fileprivate enum Operation {
         case constant(Double)
         case unaryOperation((Double) -> Double)
         case binaryOperation((Double, Double) -> Double)
@@ -193,7 +189,7 @@ struct CalculatorBrain {
         case equals
     }
     
-    private var operations: Dictionary<String, Operation> = [
+    fileprivate var operations: Dictionary<String, Operation> = [
         "π": Operation.constant(Double.pi),
         "e": Operation.constant(M_E),
         "√": Operation.unaryOperation(sqrt),
@@ -226,5 +222,53 @@ struct CalculatorBrain {
             return function(firstOperand, secondOperand)
         }
     }
+}
+
+extension CalculatorBrain {
+    func saveState(using key: String) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(program as AnyObject, forKey: key)
+    }
+    
+    mutating func loadState(using key: String) {
+        let userDefaults = UserDefaults.standard
+        if let stateToRestore = userDefaults.object(forKey: key) as? [AnyObject] {
+            program = stateToRestore
+        }
+    }
+    
+    fileprivate var program: [AnyObject] {
+        get {
+            var internalProgram: [AnyObject] = []
+            for literal in expression {
+                switch literal {
+                case .operation(let symbol): internalProgram.append(symbol as AnyObject)
+                case .operand(let operand):
+                    switch operand {
+                    case .value(let value): internalProgram.append(value as AnyObject)
+                    case .variable(let name): internalProgram.append(name as AnyObject)
+                    }
+                }
+            }
+            return internalProgram
+        }
+        set {
+            var expression: [ExpressionLiteral] = []
+            for property in newValue {
+                if let value = property as? Double {
+                    expression.append(.operand(.value(value)))
+                }
+                else if let name = property as? String {
+                    if operations[name] != nil {
+                        expression.append(.operation(name))
+                    } else {
+                        expression.append(.operand(.variable(name)))
+                    }
+                }
+            }
+            self.expression = expression
+        }
+    }
     
 }
+
