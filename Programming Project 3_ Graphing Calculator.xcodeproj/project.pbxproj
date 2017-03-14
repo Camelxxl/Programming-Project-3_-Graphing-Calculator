@@ -128,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Calculator Brain" */;
+			buildConfigurationList = EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Graphing Calculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -297,7 +297,7 @@
 				DEVELOPMENT_TEAM = X5SVCNCD2D;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "DeimanTechnology.Programming-Project-2--Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeimanTechnology.Programming-Project-3--Graphing-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +311,7 @@
 				DEVELOPMENT_TEAM = X5SVCNCD2D;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "DeimanTechnology.Programming-Project-2--Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeimanTechnology.Programming-Project-3--Graphing-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Calculator Brain" */ = {
+		EA6290BD1E5663C100C6E439 /* Build configuration list for PBXProject "Programming Project 3_ Graphing Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA6290D21E5663C200C6E439 /* Debug */,
