@@ -46,8 +46,8 @@ class CalculatorViewController: UIViewController {
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping {
-            let textCurrentlyInDisplay = display.text!
-            display.text = textCurrentlyInDisplay + digit
+			let value = numberFormatter.number(from: display.text! + digit)
+			display.text = numberFormatter.string(from: value!)
         } else {
             display.text = digit
             userIsInTheMiddleOfTyping = true
@@ -106,7 +106,7 @@ class CalculatorViewController: UIViewController {
     }
     
     // stores dictionary containing variables. 
-    // Calculater sets just van variable, but to anticipate future use...
+    // Calculater sets just one variable, but to anticipate future use...
     private var variables: [String: Double] {
         get {
             if let storedVariables = UserDefaults.standard.dictionary(forKey: Keys.variables) {

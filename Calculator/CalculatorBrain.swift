@@ -139,28 +139,28 @@ struct CalculatorBrain {
         var pendingBinaryOperation = false
         for literal in expression
         {   switch literal {
-        case .operand(let operand):
-            switch operand {
-            case .value(let value): descriptions += [numberFormatter.string(from: value as NSNumber) ?? String(value)]
-            case .variable(let name): descriptions += [name]
-            }
-        case .operation(let symbol):
-            guard let operation = operations[symbol] else { break }
-            switch operation {
-            case .equals:
-                pendingBinaryOperation = false
-            case .unaryOperation:
-                if pendingBinaryOperation {
-                    let lastOperand = descriptions.last!
-                    descriptions = [String](descriptions.dropLast()) + [symbol + "(" + lastOperand + ")"]
-                } else {
-                    descriptions = [symbol + "("] + descriptions + [")"]
+            case .operand(let operand):
+                switch operand {
+                case .value(let value): descriptions += [numberFormatter.string(from: value as NSNumber) ?? String(value)]
+                case .variable(let name): descriptions += [name]
                 }
-            case .binaryOperation:
-                pendingBinaryOperation = true
-                fallthrough
-            default: descriptions += [symbol]
-            }
+            case .operation(let symbol):
+                guard let operation = operations[symbol] else { break }
+                switch operation {
+                case .equals:
+                    pendingBinaryOperation = false
+                case .unaryOperation:
+                    if pendingBinaryOperation {
+                        let lastOperand = descriptions.last!
+                        descriptions = [String](descriptions.dropLast()) + [symbol + "(" + lastOperand + ")"]
+                    } else {
+                        descriptions = [symbol + "("] + descriptions + [")"]
+                    }
+                case .binaryOperation:
+                    pendingBinaryOperation = true
+                    fallthrough
+                default: descriptions += [symbol]
+                }
             }
         }
         return descriptions.reduce("", +)
