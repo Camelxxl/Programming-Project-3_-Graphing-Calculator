@@ -174,6 +174,18 @@ extension CalculatorViewController: UISplitViewControllerDelegate {
     }
 }
 
+extension CalculatorViewController {
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.navigationBar.isHidden = traitCollection.verticalSizeClass == .compact
+	}
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		navigationController?.navigationBar.isHidden = traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular
+	}
+}
+
 struct Keys {
     static let stateOfGraphViewVC = "GraphViewControllerState"
     static let stateOfCalculator = "CalculatorState"

@@ -90,7 +90,7 @@ class GraphView: UIView
 
 	///////////////////////////  private methods and properties
 	// for performance, use low contentScaleFactor when 'gesturing'
-	private var gesturingContentScaleFactor: CGFloat = 0.5
+	private var gesturingContentScaleFactor: CGFloat = 0.3
 	private var localContentScaleFactor: CGFloat!
 
 	private var axesDrawer: AxesDrawer?

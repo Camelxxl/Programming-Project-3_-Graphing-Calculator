@@ -67,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				EA6290D71E56641700C6E439 /* Supporting Files */,
+				EA6290C91E5663C200C6E439 /* Main.storyboard */,
 				EA6290C71E5663C200C6E439 /* CalculatorViewController.swift */,
 				EA1D458A1E5A273200DCE5B7 /* CalculatorBrain.swift */,
-				EA6290C91E5663C200C6E439 /* Main.storyboard */,
 				EA9A9B4C1E7885C6006541DB /* GraphViewController.swift */,
 				EA9A9B461E7880EC006541DB /* GraphView.swift */,
 				EA9A9B471E7880EC006541DB /* extension.swift */,
